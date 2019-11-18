@@ -13,6 +13,13 @@ body {
   font-size: 16px;
 }
 
+.first-name-error,
+.last-name-error,
+.email-address-error,
+.password-error {
+  display: none;
+}
+
 .container {
   padding: 50px 0px;
   width: 100%;
@@ -21,9 +28,8 @@ body {
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -97,8 +103,41 @@ body {
   opacity: 0.3;
   margin-bottom: 15px;
   border: 1px solid #b9b6d3;
-  font-weight: 800;
+  font-weight: 600;
   color: #3e3c49;
+}
+
+.container .form-container form input::-webkit-input-placeholder {
+  font-weight: 600;
+}
+
+.container .form-container form input:-ms-input-placeholder {
+  font-weight: 600;
+}
+
+.container .form-container form input::-ms-input-placeholder {
+  font-weight: 600;
+}
+
+.container .form-container form input::placeholder {
+  font-weight: 600;
+}
+
+.container .form-container form .error {
+  border: 1.5px solid #ff7a7a;
+  color: #ff7a7a;
+  background: url("../../images/icon-error.svg") no-repeat;
+  background-position: 97%;
+  margin-bottom: 0px;
+}
+
+.container .form-container form label {
+  position: relative;
+  color: #ff7a7a;
+  text-align: right;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 13px;
 }
 
 .container .form-container form button {
@@ -112,6 +151,10 @@ body {
   text-transform: uppercase;
   -webkit-box-shadow: 0px 4px 0px 0px #30ab76;
           box-shadow: 0px 4px 0px 0px #30ab76;
+}
+
+.container .form-container form button:hover {
+  opacity: 0.8;
 }
 
 .container .form-container form .disclaimer {

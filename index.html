@@ -20,13 +20,15 @@
         font-size: 11px;
         text-align: center;
       }
+
       .attribution a {
         color: hsl(228, 45%, 44%);
       }
     </style>
 
-    <link rel="stylesheet" href="./dist/css/index.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
+
   <body>
     <div class="container">
       <div class="heading">
@@ -46,37 +48,46 @@
           <p><span>Try it free 7 days </span>then $20/mo. thereafter</p>
         </div>
 
-        <form name="Form" action="">
+        <form>
           <input
             name="firstname"
             type="text"
             placeholder="First Name"
-            value="First Name"
             class="first-name"
           />
-          <p id="first-name-error" class="first-name-error"></p>
+          <label id="first-name-error" class="first-name-error"
+            >First Name cannot be empty</label
+          >
           <input
             name="lastname"
             type="text"
             placeholder="Last Name"
             class="last-name"
           />
-          <p id="last-name-error" class="first-name-error"></p>
+          <label id="last-name-error" class="last-name-error"
+            >Last Name cannot be empty</label
+          >
           <input
             name="email"
             type="email"
             placeholder="Email Address"
             class="email-address"
           />
-          <p id="email-error-messsage" class="email-error-message"></p>
+          <label id="email-address-error" class="email-address-error"
+            >Looks like this is not an email</label
+          >
           <input
             name="password"
             type="password"
             placeholder="Password"
             class="password"
           />
-          <p id="password-error-messsage" class="password-error-message"></p>
-          <button>Claim your free trial</button>
+          <label id="password-error" class="password-error"
+            >Password cannot be empty</label
+          >
+          <button class="form-button" onclick="validateForm()">
+            Claim your free trial
+          </button>
           <small class="disclaimer">
             By clicking the button, you are agreeing to our
             <span>Terms and Services</span></small
@@ -94,6 +105,37 @@
       </p>
     </footer>
 
-    <script src="./dist/js/index.js"></script>
+    <script>
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      function checkStatus(input, label) {
+        if (document.getElementsByClassName(input)[0].value.length < 1) {
+          document.getElementsByClassName(input)[0].classList.add("error");
+          document.getElementsByClassName(label)[0].style.display = "block";
+          return false;
+        } else if (
+          input == "email-address" &&
+          !document.getElementsByClassName(input)[0].value.match(mailformat)
+        ) {
+          document.getElementsByClassName(input)[0].classList.add("error");
+          document.getElementsByClassName(label)[0].style.display = "block";
+          return false;
+        } else {
+          document.getElementsByClassName(input)[0].classList.remove("error");
+          document.getElementsByClassName(label)[0].style.display = "none";
+          return true;
+        }
+      }
+
+      function validateForm() {
+        event.preventDefault();
+        const isTrue = value => value == true;
+        var error = [];
+        error.push(checkStatus("first-name", "first-name-error"));
+        error.push(checkStatus("last-name", "last-name-error"));
+        error.push(checkStatus("email-address", "email-address-error"));
+        error.push(checkStatus("password", "password-error"));
+        return error.every(isTrue);
+      }
+    </script>
   </body>
 </html>
