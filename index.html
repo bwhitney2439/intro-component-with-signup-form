@@ -46,24 +46,36 @@
           <p><span>Try it free 7 days </span>then $20/mo. thereafter</p>
         </div>
 
-        <form action="">
+        <form name="Form" action="">
           <input
+            name="firstname"
             type="text"
             placeholder="First Name"
             value="First Name"
             class="first-name"
           />
-          <p id="email-error-messsage" class="error-message"></p>
-          <input type="text" placeholder="Last Name" class="last-name" />
-          <p id="email-error-messsage" class="error-message"></p>
+          <p id="first-name-error" class="first-name-error"></p>
           <input
+            name="lastname"
+            type="text"
+            placeholder="Last Name"
+            class="last-name"
+          />
+          <p id="last-name-error" class="first-name-error"></p>
+          <input
+            name="email"
             type="email"
             placeholder="Email Address"
             class="email-address"
           />
-          <p id="email-error-messsage" class="error-message"></p>
-          <input type="password" placeholder="Password" class="password" />
-          <p id="email-error-messsage" class="error-message"></p>
+          <p id="email-error-messsage" class="email-error-message"></p>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            class="password"
+          />
+          <p id="password-error-messsage" class="password-error-message"></p>
           <button>Claim your free trial</button>
           <small class="disclaimer">
             By clicking the button, you are agreeing to our
@@ -81,5 +93,7 @@
         >. Coded by <a href="#">Ben Whitney</a>.
       </p>
     </footer>
+
+    <script src="./dist/js/index.js"></script>
   </body>
 </html>
